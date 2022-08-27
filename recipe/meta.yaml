@@ -32,6 +32,12 @@ test:
     - sqlmodel.engine
   commands:
     - pip check
+    # Extract the version of the built package
+    - VERSION=$(python -c 'from importlib import metadata; print(metadata.version("sqlmodel"))')
+    - echo "sqlmodel version $VERSION"
+    # Ensure that version is not 0. (This conditional looks redundant, but YAML thinks
+    # that [...] denotes a list.)
+    - if [ "0" == "$VERSION" ]; then false; fi
   requires:
     - pip
 
