@@ -18,7 +18,7 @@ build:
 requirements:
   host:
     - pip
-    - poetry
+    - poetry-core
     - python >=3.6
   run:
     - pydantic >=1.8.2
