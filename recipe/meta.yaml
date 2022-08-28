@@ -1,5 +1,5 @@
 {% set name = "sqlmodel" %}
-{% set version = "0.0.6" %}
+{% set version = "0.0.7" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sqlmodel-{{ version }}.tar.gz
-  sha256: 3b4f966b9671b24d85529d274e6c4dbc7753b468e35d2d6a40bd75cad1f66813
+  sha256: 5d4399f95cc9f54332013a0d57a90b3a1fb4cd9ec98f19f473bbf3046dfcd6be
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script:
     # Unfortunately sqlmodel relies on a custom plugin called "poetry-version-plugin"
@@ -28,13 +28,13 @@ build:
 
 requirements:
   host:
+    - python >=3.6.1,<4.0
     - pip
     - poetry-core
-    - python >=3.6
   run:
-    - pydantic >=1.8.2
-    - python >=3.6
-    - sqlalchemy >=1.4.17
+    - python >=3.6.1,<4.0
+    - sqlalchemy >=1.4.17,<=1.4.41
+    - pydantic >=1.8.2,<2.0.0
     - sqlalchemy2-stubs
 
 test:
