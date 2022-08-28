@@ -11,14 +11,25 @@ source:
   sha256: 3b4f966b9671b24d85529d274e6c4dbc7753b468e35d2d6a40bd75cad1f66813
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script:
+    # Unfortunately sqlmodel relies on a custom plugin called "poetry-version-plugin"
+    # which relies on the development version of poetry, which is annoying to install
+    # on conda-forge. But why install some weird plugin when we can just use a simple
+    # Bash hack? ;)
+
+    # Verify that the version is correctly set in __init__.py
+    - grep __version__ sqlmodel/__init__.py | grep {{ version }}
+    # Replace the version number in the pyproject.toml with the one we extracted
+    - sed -i "s/version = \"0\"/version = \"{{ version }}\"/" pyproject.toml
+    # Install
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - poetry
+    - poetry-core
     - python >=3.6
   run:
     - pydantic >=1.8.2
@@ -32,6 +43,12 @@ test:
     - sqlmodel.engine
   commands:
     - pip check
+    # Extract the version of the built package
+    - VERSION=$(python -c 'from importlib import metadata; print(metadata.version("sqlmodel"))')
+    - echo "sqlmodel version $VERSION"
+    # Ensure that version is not 0. (This conditional looks redundant, but YAML thinks
+    # that [...] denotes a list.)
+    - if [ "0" == "$VERSION" ]; then false; fi
   requires:
     - pip
 
