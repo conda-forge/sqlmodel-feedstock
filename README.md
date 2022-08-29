@@ -156,4 +156,5 @@ Feedstock Maintainers
 
 * [@maresb](https://github.com/maresb/)
 * [@thewchan](https://github.com/thewchan/)
+* [@tiangolo](https://github.com/tiangolo/)
 
