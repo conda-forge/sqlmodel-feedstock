@@ -1,7 +1,6 @@
 {% set name = "sqlmodel" %}
 {% set version = "0.0.12" %}
 
-
 package:
   name: {{ name|lower }}
   version: {{ version }}
@@ -11,7 +10,6 @@ source:
   sha256: 562306bdabc5231d024bf59784ba740659cbde1c6aa6497c8381256e5c64c36e
 
 build:
-  number: 0
   noarch: python
   script:
     # Unfortunately sqlmodel relies on a custom plugin called "poetry-version-plugin"
@@ -25,22 +23,21 @@ build:
     - sed -i "s/version = \"0\"/version = \"{{ version }}\"/" pyproject.toml
     # Install
     - {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
     - python >=3.7,<4.0
-    - pip
     - poetry-core
+    - pip
   run:
     - python >=3.7,<4.0
-    - sqlalchemy >=1.4.36,<2.0.0
+    - sqlalchemy >=2.0.0,<2.1.0
     - pydantic >=1.9.0,<2.0.0
-    - sqlalchemy2-stubs
 
 test:
   imports:
     - sqlmodel
-    - sqlmodel.engine
   commands:
     - pip check
     # Extract the version of the built package
