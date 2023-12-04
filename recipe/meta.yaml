@@ -1,5 +1,5 @@
 {% set name = "sqlmodel" %}
-{% set version = "0.0.12" %}
+{% set version = "0.0.14" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sqlmodel-{{ version }}.tar.gz
-  sha256: 562306bdabc5231d024bf59784ba740659cbde1c6aa6497c8381256e5c64c36e
+  sha256: 0bff8fc94af86b44925aa813f56cf6aabdd7f156b73259f2f60692c6a64ac90e
 
 build:
   noarch: python
@@ -33,7 +33,7 @@ requirements:
   run:
     - python >=3.7,<4.0
     - sqlalchemy >=2.0.0,<2.1.0
-    - pydantic >=1.9.0,<2.0.0
+    - pydantic >=1.10.13,<3.0.0
 
 test:
   imports:
