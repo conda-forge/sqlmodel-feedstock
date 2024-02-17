@@ -1,5 +1,5 @@
 {% set name = "sqlmodel" %}
-{% set version = "0.0.14" %}
+{% set version = "0.0.16" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sqlmodel-{{ version }}.tar.gz
-  sha256: 0bff8fc94af86b44925aa813f56cf6aabdd7f156b73259f2f60692c6a64ac90e
+  sha256: 966656f18a8e9a2d159eb215b07fb0cf5222acfae3362707ca611848a8a06bd1
 
 build:
   noarch: python
