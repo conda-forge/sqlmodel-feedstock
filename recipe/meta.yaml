@@ -11,27 +11,16 @@ source:
 
 build:
   noarch: python
-  script:
-    # Unfortunately sqlmodel relies on a custom plugin called "poetry-version-plugin"
-    # which relies on the development version of poetry, which is annoying to install
-    # on conda-forge. But why install some weird plugin when we can just use a simple
-    # Bash hack? ;)
-
-    # Verify that the version is correctly set in __init__.py
-    - grep __version__ sqlmodel/__init__.py | grep {{ version }}
-    # Replace the version number in the pyproject.toml with the one we extracted
-    - sed -i "s/version = \"0\"/version = \"{{ version }}\"/" pyproject.toml
-    # Install
-    - {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   host:
-    - python >=3.7,<4.0
-    - poetry-core
+    - python >=3.7
+    - pdm-backend
     - pip
   run:
-    - python >=3.7,<4.0
+    - python >=3.7
     - sqlalchemy >=2.0.0,<2.1.0
     - pydantic >=1.10.13,<3.0.0
 
