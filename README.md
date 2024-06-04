@@ -158,6 +158,3 @@ Feedstock Maintainers
 * [@thewchan](https://github.com/thewchan/)
 * [@tiangolo](https://github.com/tiangolo/)
 
-
-<!-- dummy commit to enable rerendering -->
-
