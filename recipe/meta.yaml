@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sqlmodel-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sqlmodel-{{ version }}.tar.gz
   sha256: 7d37c882a30c43464d143e35e9ecaf945d88035e20117bf5ec2834a23cbe505e
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pdm-backend
     - pip
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - sqlalchemy >=2.0.14,<2.1.0
     - pydantic >=1.10.13,<3.0.0
 
@@ -37,6 +37,7 @@ test:
     - if [ "0" == "$VERSION" ]; then false; fi
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/tiangolo/sqlmodel
