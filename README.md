@@ -12,13 +12,12 @@ Summary: SQL databases in Python, designed for simplicity, compatibility, and ro
 Documentation: https://sqlmodel.tiangolo.com/
 
 SQLModel is designed to simplify interacting with SQL databases in FastAPI
- applications, it was created by the same author. It combines SQLAlchemy
- and Pydantic and tries to simplify the code you write as much as possible,
- allowing you to reduce the code duplication to a minimum, but while getting
- the best developer experience possible. SQLModel is, in fact, a thin layer
- on top of Pydantic and SQLAlchemy, carefully designed to be compatible with
- both.
-
+applications, it was created by the same author. It combines SQLAlchemy
+and Pydantic and tries to simplify the code you write as much as possible,
+allowing you to reduce the code duplication to a minimum, but while getting
+the best developer experience possible. SQLModel is, in fact, a thin layer
+on top of Pydantic and SQLAlchemy, carefully designed to be compatible with
+both.
 
 Current build status
 ====================
