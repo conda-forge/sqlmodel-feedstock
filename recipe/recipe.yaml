@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: sqlmodel
-  version: "0.0.29"
+  version: "0.0.30"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sqlmodel-${{ version }}.tar.gz
-  sha256: cdebdeda7addb3d934c7a70812a23aa8bdff5550bfffa023db72dec1ba5e45d7
+  sha256: 076076976aac683bae3e10c791d9e2ec5fead57ab25f7e476dea36cdfe9505e1
 
 build:
   number: 0
