@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: sqlmodel
-  version: "0.0.30"
+  version: 0.0.31
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/sqlmodel-${{ version }}.tar.gz
-  sha256: 076076976aac683bae3e10c791d9e2ec5fead57ab25f7e476dea36cdfe9505e1
+  sha256: 2d41a8a9ee05e40736e2f9db8ea28cbfe9b5d4e5a18dd139e80605025e0c516c
 
 build:
   number: 0
@@ -25,8 +25,7 @@ requirements:
   run:
     - python >=${{ python_min }}
     - sqlalchemy >=2.0.14,<2.1.0
-    - pydantic >=1.10.13,<3.0.0
-
+    - pydantic >=2.7.0
 tests:
   - python:
       imports:
